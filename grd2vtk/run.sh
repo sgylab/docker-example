@@ -1,7 +1,7 @@
-docker container rm -f gmt4
+docker container rm -f grd2vtk
 docker run \
     -it \
 	--rm \
 	-v $(pwd)/data:/data \
-       	--name gmt4_image gmt4 \
+       	--name grd2vtk grd2vtk \
        /bin/bash	
