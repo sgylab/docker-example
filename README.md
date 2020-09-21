@@ -35,6 +35,8 @@ Remove image:
 
     docker image rm [image name]
 
+## Danger zone
+
 Remove all containers(!):
 
     docker rm -f $(docker ps -a -q)
