@@ -8,8 +8,8 @@ env:
 on:
   push:
     paths: 
-      - $DOCKER_FILE
-      - $WORKFLOW
+      - '$DOCKER_FILE'
+      - '$WORKFLOW'
 
 jobs:
   Build_Docker_Image:
