@@ -11,7 +11,7 @@ docker run -d \
         -v /etc/shadow:/etc/shadow:ro \
         -v /etc/group:/etc/group:ro \
         -v <path/to/workspace>:/home/${USER} \
-        --name obspy_ssh obspy
+        --name obspy_ssh sgylab/obspy
 ```
 
 1. Create a workspace directory.
