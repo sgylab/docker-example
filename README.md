@@ -9,4 +9,6 @@ The Github Actions are in [.github/workflows](.github/workflows).
 
 ## Image build status
 
-![Obspy Docker Image](https://github.com/sgylab/docker-example/workflows/Obspy%20Docker%20Image/badge.svg)
+Docker Image|Status
+:-----------|:-----
+[sgylab/obspy](obspy)|![Obspy Docker Image](https://github.com/sgylab/docker-example/workflows/Obspy%20Docker%20Image/badge.svg)
