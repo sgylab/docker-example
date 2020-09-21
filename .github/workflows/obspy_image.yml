@@ -1,15 +1,14 @@
 name: Obspy Docker Image 
 
-env:
-  DOCKER_REPO: sgylab/obspy
-  DOCKER_FILE: obspy/Dockerfile
-  WORKFLOW: .github/workflows/obspy_image.yml
-
 on:
   push:
     paths: 
-      - '$DOCKER_FILE'
-      - '$WORKFLOW'
+      - '.github/workflows/obspy_image.yml'
+      - 'obspy/Dockerfile'
+
+env:
+  DOCKER_REPO: sgylab/obspy
+  DOCKER_FILE: obspy/Dockerfile
 
 jobs:
   Build_Docker_Image:
