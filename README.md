@@ -19,7 +19,11 @@ Update image:
 
     docker pull [image name]
 
-Resume the container which is already existed:
+List exist container:
+
+    docker container ls
+
+Resume stopped container:
 
     docker start [container name]
 
