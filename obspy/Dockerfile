@@ -10,7 +10,6 @@ RUN echo '%staff   ALL=(ALL:ALL) ALL' >> /etc/sudoers
 
 # nodejs source
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install nodejs -y
 
