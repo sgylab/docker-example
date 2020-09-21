@@ -1,12 +1,15 @@
 name: Obspy Docker Image 
 
+env:
+  DOCKER_REPO: sgylab/obspy
+  DOCKER_FILE: obspy/Dockerfile
+  WORKFLOW: .github/workflows/obspy_image.yml
+
 on:
   push:
     paths: 
-      - 'obspy/Dockerfile'
-      - '.github/workflows/obspy_image.yml'
-env:
-  DOCKER_REPO: sgylab/obspy
+      - $DOCKER_FILE
+      - $WORKFLOW
 
 jobs:
   Build_Docker_Image:
@@ -18,7 +21,7 @@ jobs:
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
     - name: Build image
-      run: docker build . --file obspy/Dockerfile --tag $DOCKER_REPO
+      run: docker build . --file $DOCKER_FILE --tag $DOCKER_REPO
 
     - name: Push image
       run: docker push $DOCKER_REPO
