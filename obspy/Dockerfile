@@ -14,6 +14,7 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install nodejs -y
 
+# Python package install
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install shapely numpy scipy matplotlib --no-binary shapely; python3 -m pip --no-cache-dir install --upgrade jupyterlab ipympl obspy Cartopy seaborn pylint flake8 yapf 
 
@@ -21,6 +22,7 @@ RUN python3 -m pip install shapely numpy scipy matplotlib --no-binary shapely; p
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && jupyter labextension install jupyter-matplotlib --no-build
 RUN jupyter lab build
 
+# Allow root login
 RUN mkdir /var/run/sshd
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
@@ -30,6 +32,7 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
+# Clear login message and add ls color
 RUN echo 'alias ls="ls --color"' > /etc/bash.bashrc
 
 EXPOSE 22
