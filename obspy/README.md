@@ -16,14 +16,18 @@ docker run -d \
 
 1. Create a workspace directory.
 2. Link `<path/to/workspace>` to the user home directory.
-3. Change `49154` to any port for security.
+3. Change `49154` to any number for SSH port.
 4. Save and run `run_ssh.sh`.
+5. SSH into the docker container with your user account.
+
+       ssh user@127.0.0.1 -p49154
 
 If you want to start a Jupyter Lab server:
 
-1. Paste [jupyter.sh](jupyter.sh) in to the workspace 
-2. Run it and paste the url to the browser.
+1. SSH into your docker container.
+2. Paste [jupyter.sh](jupyter.sh) in to the workspace 
+3. Run it and paste the url to the browser.
 
        http://127.0.0.1:8888/?token=36b31a373a9d18cc9b30a50883ad5a3638b19bed47be8074
 
-3. Change the url IP if you run on a remote server. 
+4. Change the url IP if you run on a remote server. 
