@@ -15,6 +15,10 @@ Docker Image|Status
 
 ## Useful docker commands 
 
+Build image:
+
+    docker build -t [image name] .
+
 Update image:
 
     docker pull [image name]
