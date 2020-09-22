@@ -15,7 +15,7 @@ Docker Image|Status
 
 ## Useful docker commands 
 
-Build image:
+Build image with Dockerfile:
 
     docker build -t [image name] .
 
