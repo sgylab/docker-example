@@ -17,7 +17,7 @@ RUN apt-get install nodejs -y
 
 # Python package install
 RUN python3 -m pip install --upgrade pip
-COPY requirements.txt /tmp/
+COPY obspy/requirements.txt /tmp/
 RUN python3 -m pip install shapely numpy scipy matplotlib --no-binary shapely; python3 -m pip --no-cache-dir install --upgrade --requirement /tmp/requirements.txt
 
 # Jupyter Lab interactive plot
