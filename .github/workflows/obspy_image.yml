@@ -5,6 +5,7 @@ on:
     paths: 
       - '.github/workflows/obspy_image.yml'
       - 'obspy/Dockerfile'
+      - 'obspy/requirements.txt'
 
 env:
   DOCKER_REPO: sgylab/obspy
