@@ -1,0 +1,8 @@
+jupyterlab 
+ipympl 
+obspy 
+Cartopy 
+seaborn 
+pylint 
+flake8 
+yapf 

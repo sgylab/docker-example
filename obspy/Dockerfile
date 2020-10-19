@@ -17,7 +17,8 @@ RUN apt-get install nodejs -y
 
 # Python package install
 RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install shapely numpy scipy matplotlib --no-binary shapely; python3 -m pip --no-cache-dir install --upgrade jupyterlab ipympl obspy Cartopy seaborn pylint flake8 yapf 
+COPY requirements.txt /tmp/
+RUN python3 -m pip install shapely numpy scipy matplotlib --no-binary shapely; python3 -m pip --no-cache-dir install --upgrade --requirement /tmp/requirements.txt
 
 # Jupyter Lab interactive plot
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && jupyter labextension install jupyter-matplotlib --no-build
