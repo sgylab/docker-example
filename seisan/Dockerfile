@@ -4,7 +4,7 @@ FROM ubuntu:18.04
 ENV DEBIAN_FRONTEND noninteractive
 
 # RUN sed -i 's/archive.ubuntu.com/free.nchc.org.tw/g' /etc/apt/sources.list
-RUN apt-get update && apt-get upgrade -y
+RUN apt-get update --fix-missing && apt-get upgrade -y
 RUN apt-get install build-essential gcc gfortran libgfortran3 libx11-dev libx11-xcb-dev xorg openbox curl sudo openssh-server vim htop screen reptyr git -y
 
 # Add all user into sudoers
@@ -21,6 +21,8 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 RUN mkdir /var/run/sshd
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
+
+# Fix X11 forwarding request failed on channel 0
 RUN sed -i 's/#X11UseLocalhost yes/X11UseLocalhost no/g' /etc/ssh/sshd_config
 
 # Clear login message for sftp login and add ls color
