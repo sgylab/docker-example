@@ -29,7 +29,7 @@ RUN sed -i 's/#X11UseLocalhost yes/X11UseLocalhost no/g' /etc/ssh/sshd_config
 RUN echo 'alias ls="ls --color"' > /etc/bash.bashrc
 
 # Add SEISAN to bashrc
-RUN echo 'source /opt/seismo/COM/SEISAN.bash' >> /etc/bash.bashrc; echo 'alias select="/home/user/seismo/PRO/select"' >> /etc/bash.bashrc
+RUN echo 'source /opt/seismo/COM/SEISAN.bash' >> /etc/bash.bashrc && echo 'alias select="/home/user/seismo/PRO/select"' >> /etc/bash.bashrc
 
 # Start ssh service
 EXPOSE 22

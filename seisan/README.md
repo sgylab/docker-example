@@ -25,3 +25,15 @@ docker run -d \
 6. SSH into the docker container with your user account.
 
        ssh user@127.0.0.1 -p49154
+
+## Git LFS
+
+        git lfs install
+        git lfs track '*.tar.gz'
+        git add .gitattributes
+
+        git add seisan/seisan_v11_linux_64.tar.gz
+        git commit -m "Add seisan file"
+        git push 
+
+        git lfs push origin --all
