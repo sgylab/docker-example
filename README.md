@@ -12,6 +12,7 @@ The Github Actions are in [.github/workflows](.github/workflows).
 Docker Image|Status
 :-----------|:-----
 [sgylab/obspy](obspy)|![Obspy Docker Image](https://github.com/sgylab/docker-example/workflows/Obspy%20Docker%20Image/badge.svg)
+[sgylab/seisan](seisan)|![SEISAN Docker Image](https://github.com/sgylab/docker-example/workflows/SEISAN%20Docker%20Image/badge.svg)
 
 ## Useful docker commands 
 
