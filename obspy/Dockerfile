@@ -3,18 +3,18 @@ FROM ubuntu:18.04
 # Ignore all interactive dialog during apt-get update
 ENV DEBIAN_FRONTEND noninteractive
 
-# Nodejs source
-RUN apt-get install -y curl; \
-    curl -sL https://deb.nodesource.com/setup_12.x | bash - ;
-
 # Install linux package
 RUN apt-get update && apt-get upgrade -y; \
     apt-get install -y \
     build-essential libssl-dev libffi-dev \
     python3-dev python3-pip \
-    sudo vim git openssh-server nodejs\
+    sudo vim git openssh-server curl \
     htop iotop screen reptyr \
     libproj-dev proj-data proj-bin libgeos-dev;
+
+# Nodejs source
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+    apt-get update && apt-get install -y nodejs;
 
 # Add all user into sudoers
 RUN echo '%staff   ALL=(ALL:ALL) ALL' >> /etc/sudoers;
@@ -28,7 +28,7 @@ RUN python3 -m pip install --upgrade pip; \
 # Jupyter Lab interactive plot
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build; \
     jupyter labextension install jupyter-matplotlib --no-build; \
-    jupyter lab build
+    jupyter lab build;
 
 # SSH login fix. Otherwise user is kicked off after login
 RUN mkdir /var/run/sshd; \
