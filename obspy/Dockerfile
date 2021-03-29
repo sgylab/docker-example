@@ -4,14 +4,15 @@ FROM ubuntu:18.04
 ENV DEBIAN_FRONTEND noninteractive
 
 # Nodejs source
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - ;
+RUN apt-get install -y curl; \
+    curl -sL https://deb.nodesource.com/setup_12.x | bash - ;
 
 # Install linux package
 RUN apt-get update && apt-get upgrade -y; \
     apt-get install -y \
     build-essential libssl-dev libffi-dev \
     python3-dev python3-pip \
-    sudo vim git curl openssh-server nodejs\
+    sudo vim git openssh-server nodejs\
     htop iotop screen reptyr \
     libproj-dev proj-data proj-bin libgeos-dev;
 
