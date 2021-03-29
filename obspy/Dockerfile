@@ -13,7 +13,7 @@ RUN apt-get update && apt-get upgrade -y; \
     libproj-dev proj-data proj-bin libgeos-dev;
 
 # Nodejs source
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - ; \
     apt-get update && apt-get install -y nodejs;
 
 # Add all user into sudoers
