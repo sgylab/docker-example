@@ -15,12 +15,13 @@ RUN apt-get update --fix-missing && apt-get upgrade -y; \
 RUN echo '%staff   ALL=(ALL:ALL) ALL' >> /etc/sudoers;
 
 # Install SEISAN
-RUN mkdir /opt/seismo; chmod a+x /opt/seismo
+RUN mkdir /opt/seismo; 
 COPY seisan/seisan_v11_linux_64.tar.gz /opt/seismo/
 WORKDIR /opt/seismo
 RUN gunzip seisan_v11_linux_64.tar.gz; tar xvf seisan_v11_linux_64.tar; \
     sed -i 's/SEISARCH="linux64"/SEISARCH="gfortran"/g' /opt/seismo/COM/SEISAN.bash; \
-    sed -i 's/SEISAN_TOP="\/home\/s2000\/seismo"/SEISAN_TOP="\/opt\/seismo"/g' /opt/seismo/COM/SEISAN.bash;
+    sed -i 's/SEISAN_TOP="\/home\/s2000\/seismo"/SEISAN_TOP="\/opt\/seismo"/g' /opt/seismo/COM/SEISAN.bash; \
+    chmod 777 -R /opt/seismo
 
 # SSH login fix. Otherwise user is kicked off after login
 RUN mkdir /var/run/sshd; \
