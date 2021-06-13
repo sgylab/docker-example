@@ -38,8 +38,8 @@ RUN mkdir /var/run/sshd; \
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile;
 
-# Clear login message for sftp login and add ls color
-RUN echo 'alias ls="ls --color"' > /etc/bash.bashrc
+# Clear login message for sftp login
+RUN cp /etc/skel/.bashrc /etc/bash.bashrc;
 
 # Start ssh service
 EXPOSE 22

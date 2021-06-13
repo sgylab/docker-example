@@ -34,8 +34,8 @@ RUN echo "export VISIBLE=now" >> /etc/profile;
 # Fix X11 forwarding request failed on channel 0
 RUN sed -i 's/#X11UseLocalhost yes/X11UseLocalhost no/g' /etc/ssh/sshd_config;
 
-# Clear login message for sftp login and add ls color
-RUN echo 'alias ls="ls --color"' > /etc/bash.bashrc;
+# Clear login message for sftp login
+RUN cp /etc/skel/.bashrc /etc/bash.bashrc;
 
 # Add SEISAN to bashrc
 RUN echo 'source /opt/seismo/COM/SEISAN.bash' >> /etc/bash.bashrc; \
