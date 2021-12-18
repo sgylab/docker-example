@@ -11,22 +11,20 @@ RUN apt-mark hold libcudnn* cuda*; \
     apt-get update && apt-get upgrade -y; \
     apt-get install -y \
         build-essential gcc gfortran libgfortran3 \
+        libproj-dev proj-data proj-bin libgeos-dev \
+        libx11-dev libx11-xcb-dev xorg openbox \
         openssh-server \
-        sudo vim git nodejs ffmpeg \
+        sudo vim git nodejs ffmpeg graphviz \
         htop iotop screen reptyr;
 
 # Add all user into sudoers
 RUN echo '%staff   ALL=(ALL:ALL) ALL' >> /etc/sudoers;
 
 # Install python packages in requirements.txt
-COPY requirements.txt /tmp/
+COPY tensorflow/requirements.txt /tmp/
 RUN python -m pip install --upgrade pip; \
     python -m pip install shapely --no-binary shapely; \
     python -m pip --no-cache-dir install --upgrade --requirement /tmp/requirements.txt;
-
-# Install development related python packages in requirements_dev.txt
-COPY tensorflow/requirements_dev.txt /tmp/
-RUN python -m pip --no-cache-dir install --upgrade --requirement /tmp/requirements_dev.txt;
 
 # Jupyter Lab interactive plot
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build; \
