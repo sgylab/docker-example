@@ -1,0 +1,38 @@
+name: Tensorflow Docker Image 
+
+on:
+  push:
+    paths: 
+      - '.github/workflows/tensorflow_image.yml'
+      - 'tensorflow/Dockerfile'
+      - 'tensorflow/requirements.txt'
+
+env:
+  DOCKER_REPO: sgylab/tensorflow
+  DOCKER_FILE: tensorflow/Dockerfile
+
+jobs:
+  Build_Docker_Image:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Login Docker Hub
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+    - name: Build image
+      run: docker build . --file $DOCKER_FILE --tag $DOCKER_REPO
+
+    - name: Push image
+      run: docker push $DOCKER_REPO
+
+    - name: Push image with date
+      run: |
+        DATE=$(date +'%Y%m%d')
+        docker tag $DOCKER_REPO $DOCKER_REPO:build.$DATE
+        docker push $DOCKER_REPO:build.$DATE
+        
+    - name: Push image with git commit hash
+      run: |
+        docker tag $DOCKER_REPO $DOCKER_REPO:${GITHUB_SHA::7}
+        docker push $DOCKER_REPO:${GITHUB_SHA::7}
